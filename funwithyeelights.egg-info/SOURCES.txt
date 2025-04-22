@@ -1,0 +1,7 @@
+LICENSE
+README.md
+pyproject.toml
+src/funwithyeelights.egg-info/PKG-INFO
+src/funwithyeelights.egg-info/SOURCES.txt
+src/funwithyeelights.egg-info/dependency_links.txt
+src/funwithyeelights.egg-info/top_level.txt
