@@ -1,21 +1,31 @@
 import yeelight
 from yeelight import Bulb
 import time
-myIP = '192.168.0.8' #sets a variable for my IP, IP will differ based on user's bulb
-bulb = Bulb(myIP) #Connects to our bulb via IP
+from yeelightclass import YeeLightClass
 
-bulb.turn_on(effect="smooth") #turns on our bulb in a smooth manner
+class USA(YeeLightClass):
+    def __init__(self, myIP):
+        super().__init__(myIP)
 
-bulb.set_brightness(100)
+    def start(self):
+        self.bulb.turn_on(effect="smooth") #turns on our bulb in a smooth manner
 
-bulb.set_rgb(255,0,0) #Sets our bulb color to Red
+        self.bulb.set_brightness(100)
+        for i in range(3):
+            self.bulb.set_rgb(255,0,0) #Sets our bulb color to Red
 
-time.sleep(2)
+            time.sleep(1)
 
-bulb.set_rgb(1,1,1) #Sets our bulb color to White
+            self.bulb.set_rgb(1,1,1) #Sets our bulb color to White
 
-time.sleep(2)
+            time.sleep(1)
 
-bulb.set_rgb(0,0,255)  #Sets our bulb color to Blue
+            self.bulb.set_rgb(0,0,255)  #Sets our bulb color to Blue
 
-print("USA")
+            time.sleep(1)
+            
+            print("USA")
+
+
+if __name__ == "__main__":
+    USA(myIP='192.168.0.8').start()

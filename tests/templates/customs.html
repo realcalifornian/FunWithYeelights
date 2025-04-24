@@ -3,9 +3,13 @@
        <title>Custom Yeelights</title> 
     </head>
     <body>
+        <form>
+            <input name="Button3" id="Button3" type="text" />
+        </form>
+
         <h1>{{customtext}}</h1>
         <p><a href="{{ url_for('introduction') }}">Go Back Home</a></p>
-        <p><left><img src="{{demored}}">Red Alert</left></p>
+        <p><left><a href="/customs?Button3=RedAlert"><img src="{{demored}}">Red Alert</a></left></p>
         <p><top><img src="{{demoUSA}}">USA</top></p>
         <p><right><img src="{{demogreen}}">Safety</right></p>
         <p><bottom><img src="{{demowheel}}">ColorWheel</bottom></p>

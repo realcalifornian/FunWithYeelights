@@ -1,7 +1,7 @@
 import yeelight
 from yeelight import Bulb
 import time
-from .yeelightclass import YeeLightClass
+from yeelightclass import YeeLightClass
 
 class Nuggets(YeeLightClass):
     def __init__(self, myIP):
@@ -20,4 +20,6 @@ class Nuggets(YeeLightClass):
 
         print("Go Nuggets! I love you Nikola Jokic!")
 
-IP = Nuggets("192.168.0.8")
+if __name__ == "__main__":
+    Nuggets(myIP='192.168.0.8').start() #starts the program
+

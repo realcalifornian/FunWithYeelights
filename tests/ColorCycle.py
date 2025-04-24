@@ -1,26 +1,36 @@
 import yeelight
 from yeelight import Bulb
 import time
-myIP = '192.168.0.8' #sets a variable for my IP, IP will differ based on user's bulb
-bulb = Bulb(myIP) #Connects to our bulb via IP
+from yeelightclass import YeeLightClass
+import random
 
-bulb.set_rgb(10,15,20)
+class ColorWheel(YeeLightClass):
+    def __init__(self, myIP):
+        super().__init__(myIP)
 
-time.sleep(2)
+    def start(self):
+        self.bulb.turn_on(effect="smooth") #turns on our bulb in a smooth manner
 
-rgbX = 100
+        self.bulb.set_rgb(1,1,1)
 
-rgbY = 40
+        self.bulb.set_brightness(75)
 
-rgbZ = 105
+        time.sleep(2)
 
-for i in range(15):
-    bulb.set_rgb(rgbX,rgbY,rgbZ)
-    i = i + 1
-    rgbX = (rgbX - 15)
-    rgbY = (rgbY + (i + 2))
-    rgbZ = (rgbZ * (i + 2))
+        rgbX = random.randint(1,100)
 
-    time.sleep(2)
+        rgbY = random.randint(1,120)
 
-print("Enjoy the Fun?")
+        rgbZ = random.randint(1,110)
+        for i in range(15):
+            self.bulb.set_rgb(rgbX,rgbY,rgbZ) #uses our variables above to set an initial random color to the bulb
+            i = i #hastens our script and changes our i values for the sake of altering the bulb's color even further
+            rgbX = (rgbX - 5)
+            rgbY = (rgbY + (i + random.randint(5,20)))
+            rgbZ = (rgbZ * (i + random.randint(2,40)))
+
+            time.sleep(1)
+        print("Enjoy the fun?")
+
+if __name__ == "__main__":
+    ColorWheel(myIP='192.168.0.8').start()

@@ -1,7 +1,21 @@
 from flask import Flask, render_template, request  
-app = Flask(__name__) # Flask constructor 
-import os   
+app = Flask(__name__) # Flask constructor
+import os
+from yeelight import Bulb
+from Nuggets import Nuggets
+from Avs import Avs
+from Broncos import Broncos
+from ColorCycle import ColorWheel
+from LeBulb import Lakers
+from RedAlert import RedAlert
+from Rockies import Rockies
+from Safety import Safety
+from USA import USA
   
+
+myIP = '192.168.0.8'
+bulb = Bulb(myIP)
+
 picFolder = os.path.join('static','pics') #allows us to access our folder holding every necessary image for later
 
 app.config['UPLOAD_FOLDER'] = picFolder #gives us access to our upload folder as well, allowing image uploads
@@ -28,14 +42,29 @@ def introduction():
 def custom_route():
     redalert = os.path.join(app.config['UPLOAD_FOLDER'], 'RedAlertyeelight.JPG')
     safety = os.path.join(app.config['UPLOAD_FOLDER'], 'Safetyyeelight.JPG')
-    USA = os.path.join(app.config['UPLOAD_FOLDER'], 'USAyeelight.JPG')
+    USApic = os.path.join(app.config['UPLOAD_FOLDER'], 'USAyeelight.JPG')
     colorwheel = os.path.join(app.config['UPLOAD_FOLDER'], 'Colorwheelyeelight.JPG')
+    try:
+        special = request.args["Button3"]
+        print(special)
+        if special == "RedAlert":
+            RedAlert(myIP).start()
+        elif special == "Safety":
+            Safety(myIP).start()
+        elif special == "USA":
+            USA(myIP).start()
+        elif special == "ColorWheel":
+            ColorWheel(myIP).start()
+        else:
+            bulb.set_rgb(1,1,1)
+    except:
+        pass
     return render_template(
         "customs.html",
         customtext = "Below are some random custom light patterns",
         demored = redalert,
         demogreen = safety,
-        demoUSA = USA,
+        demoUSA = USApic,
         demowheel = colorwheel
     )
 
@@ -46,6 +75,23 @@ def sport_route():
     nuggets = os.path.join(app.config['UPLOAD_FOLDER'], 'Nuggetsyeelight.JPG')
     rockies = os.path.join(app.config['UPLOAD_FOLDER'], 'Rockiesyeelight.JPG')
     lakers = os.path.join(app.config['UPLOAD_FOLDER'], 'Lakersyeelight.JPG')
+    try:
+        team = request.args["Button2"]
+        print(team)
+        if team == "Broncos":
+            Broncos(myIP).start()
+        elif team == "Avs":
+            Avs(myIP).start()
+        elif team == 'Nuggets':
+            Nuggets(myIP).start()
+        elif team == 'Rockies':
+            Rockies(myIP).start()
+        elif team == 'Lakers':
+            Lakers(myIP).start()
+        else:
+            bulb.set_rgb(1,1,1)
+    except:
+        pass
     return render_template(
         "sports.html",
         sportstext = "Below are some random custom light patterns specifically for sports teams",
