@@ -10,5 +10,5 @@ Conversely, you can also statically assign your Yeelight an IP so that it falls 
 
 Have fun!
 
-#Startup
+# Startup
 
