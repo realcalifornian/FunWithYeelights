@@ -4,6 +4,9 @@ import time
 from yeelightclass import YeeLightClass
 
 class Avs(YeeLightClass):
+    """
+    Using the Abstract YeelightClass, this code is used for creating the Avs version of the Yeelight colorshifting functionality
+    """
     def __init__(self, myIP):
         super().__init__(myIP)
 

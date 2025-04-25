@@ -4,6 +4,9 @@ import time
 from yeelightclass import YeeLightClass
 
 class USA(YeeLightClass):
+    """
+    Using the Abstract YeelightClass, this code is used for creating a patriotic USA flash chant that utilizes the Yeelight's colorshifting functionality
+    """
     def __init__(self, myIP):
         super().__init__(myIP)
 

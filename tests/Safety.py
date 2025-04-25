@@ -4,6 +4,9 @@ import time
 from yeelightclass import YeeLightClass
 
 class Safety(YeeLightClass):
+    """
+    Using the Abstract YeelightClass, this code is used for creating an unalarming effect with a flashing green light to symbolize that any danger has been taken care of. This is done through using both the colorshift and brightness altering effects present with the Yeelight
+    """
     def __init__(self, myIP):
         super().__init__(myIP)
 

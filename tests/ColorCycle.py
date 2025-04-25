@@ -5,6 +5,9 @@ from yeelightclass import YeeLightClass
 import random
 
 class ColorWheel(YeeLightClass):
+    """
+    Using the Abstract YeelightClass, this code is used for creating a randomized color wheel with the Yeelight colorshifting functionality
+    """
     def __init__(self, myIP):
         super().__init__(myIP)
 

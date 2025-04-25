@@ -13,7 +13,7 @@ from Safety import Safety
 from USA import USA
   
 
-myIP = '192.168.0.8'
+myIP = '192.168.0.8' #alter this to your IP for the lightbulb functions to work
 bulb = Bulb(myIP)
 
 picFolder = os.path.join('static','pics') #allows us to access our folder holding every necessary image for later
